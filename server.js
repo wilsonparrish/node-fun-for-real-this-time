@@ -48,26 +48,25 @@ var message = {
 	"message": "Hello World"
 };
 
-/*
+
 app.get('/api/messages', function(req, res) {
 	return res.send(message);
 });
-app.post('/api/receive_message', function(req, res){
-	console.log(req.body);
-	res.send();
-});
-app.get('/api/testData/:attitude', function(req, res){
-	console.log("req.params: ", req.params);
-	console.log("req.params.attitude: ", req.params.attitude);
-	if(req.params.attitude === 'positive') {
-		res.send(positiveMessage);
-	}
-	if(req.params.attitude === 'rude') {
-		res.send(rudeMessage);
-	}
-})
-*/
-
+// app.post('/api/receive_message', function(req, res){
+// 	console.log(req.body);
+// 	request.post("https://" + accountSid + ":" + authToken + "@api.twilio.com/2010-04-01/Accounts/" + accountSid + "/Messages.json")
+// 	res.send();
+// });
+// app.get('/api/testData/:attitude', function(req, res){
+// 	console.log("req.params: ", req.params);
+// 	console.log("req.params.attitude: ", req.params.attitude);
+// 	if(req.params.attitude === 'positive') {
+// 		res.send(positiveMessage);
+// 	}
+// 	if(req.params.attitude === 'rude') {
+// 		res.send(rudeMessage);
+// 	}
+// })
 
 
 app.post('/api/receive_message', function(req, res){
@@ -75,7 +74,7 @@ app.post('/api/receive_message', function(req, res){
 	client.messages.create({ 
 		to: "2084063504", 
 		from: "+12089043426", 
-		body: "req.body.message",   
+		body: req.body.message,   
 	}, function(err, message) { 
 		console.log(message.sid); 
 	});
